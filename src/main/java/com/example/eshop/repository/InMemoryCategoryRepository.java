@@ -27,6 +27,9 @@ public class InMemoryCategoryRepository {
     public Optional<Category> findByName(String name) {
         return DataHolder.categories.stream().filter(r->r.getName().equals(name)).findFirst();
     }
+    public Optional<Category> findById(Long id) {
+        return DataHolder.categories.stream().filter(r->r.getId().equals(id)).findFirst();
+    }
 
     public List<Category> search(String text) {
         return DataHolder.categories.stream().filter(r->r.getName().contains(text) || r.getDescription().contains(text)).collect(Collectors.toList());
