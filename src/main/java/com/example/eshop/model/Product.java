@@ -1,8 +1,10 @@
 package com.example.eshop.model;
 
 import lombok.Data;
+import lombok.Getter;
 
 @Data
+@Getter
 public class Product {
 
     private Long id;
@@ -13,7 +15,7 @@ public class Product {
     private Manufacturer manufacturer;
 
     public Product (String name, Double price, Integer quantity, Category category, Manufacturer manufacturer) {
-        this.id = (long) (Math.random()*100);
+        this.id = (long) (Math.random()*1000);
         this.name = name;
         this.price = price;
         this.quantity = quantity;

@@ -1,8 +1,10 @@
 package com.example.eshop.model;
 
 import lombok.Data;
+import lombok.Getter;
 
 @Data
+@Getter
 public class Manufacturer {
 
     private Long id;

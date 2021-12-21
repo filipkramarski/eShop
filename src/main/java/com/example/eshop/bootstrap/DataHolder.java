@@ -30,13 +30,13 @@ public class DataHolder {
 
             Manufacturer manufacturer = new Manufacturer("NIKE", "NY NY");
             manufacturers.add(manufacturer);
+            manufacturers.add(new Manufacturer("Apple", "LA LA"));
 
             Category category = new Category("Sport", "Sport category");
             categories.add(category);
             products.add(new Product("Ball 1", 235.8, 7, category, manufacturer));
             products.add(new Product("Ball 2", 235.8, 7, category, manufacturer));
             products.add(new Product("Ball 3", 235.8, 7, category, manufacturer));
-
     }
 }
 
