@@ -1,9 +1,6 @@
 package com.example.eshop.bootstrap;
 
-import com.example.eshop.model.Category;
-import com.example.eshop.model.Manufacturer;
-import com.example.eshop.model.Product;
-import com.example.eshop.model.User;
+import com.example.eshop.model.*;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +15,7 @@ public class DataHolder {
     public static List<User> users = new ArrayList<>();
     public static List<Manufacturer> manufacturers = new ArrayList<>();
     public static List<Product> products = new ArrayList<>();
+    public static List<ShoppingCart> shoppingCarts = new ArrayList<>();
 
     @PostConstruct
             public void init() {
@@ -25,8 +23,8 @@ public class DataHolder {
             categories.add(new Category("Books", "Books category"));
             categories.add(new Category("Software", "Software category"));
 
-            users.add(new User("kostadin.mishev", "km", "Kostadin", "Mishev"));
-            users.add(new User("riste.stojanov", "rs", "Riste", "Stojanov"));
+            users.add(new User("filipkramarski", "fk", "Filip", "Kramarski"));
+            users.add(new User("sandrakramarska", "sk", "Sandra", "Kramarska"));
 
             Manufacturer manufacturer = new Manufacturer("NIKE", "NY NY");
             manufacturers.add(manufacturer);
@@ -35,8 +33,9 @@ public class DataHolder {
             Category category = new Category("Sport", "Sport category");
             categories.add(category);
             products.add(new Product("Ball 1", 235.8, 7, category, manufacturer));
-            products.add(new Product("Ball 2", 235.8, 7, category, manufacturer));
-            products.add(new Product("Ball 3", 235.8, 7, category, manufacturer));
+            products.add(new Product("Harry Potter", 235.8, 7, category, manufacturer));
+            products.add(new Product("Android", 235.8, 7, category, manufacturer));
+
     }
 }
 
