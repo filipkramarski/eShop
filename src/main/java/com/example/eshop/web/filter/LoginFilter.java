@@ -1,4 +1,4 @@
-package com.example.eshop.web.filter;
+/*package com.example.eshop.web.filter;
 
 import com.example.eshop.model.User;
 
@@ -37,5 +37,5 @@ public class LoginFilter implements Filter {
     public void destroy() {
 
     }
-}
+}*/
 
