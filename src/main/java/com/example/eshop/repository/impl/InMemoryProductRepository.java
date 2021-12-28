@@ -1,4 +1,4 @@
-package com.example.eshop.repository;
+package com.example.eshop.repository.impl;
 
 import com.example.eshop.bootstrap.DataHolder;
 import com.example.eshop.model.Category;

@@ -5,16 +5,18 @@ import com.example.eshop.model.User;
 import com.example.eshop.model.exceptions.InvalidArgumentsException;
 import com.example.eshop.model.exceptions.InvalidUserCredentialsException;
 import com.example.eshop.model.exceptions.PasswordsDoNotMatchException;
-import com.example.eshop.repository.InMemoryUserRepository;
+import com.example.eshop.model.exceptions.UsernameAlreadyExistsException;
+import com.example.eshop.repository.impl.InMemoryUserRepository;
+import com.example.eshop.repository.jpa.UserRepository;
 import com.example.eshop.service.AuthService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthServiceImpl implements AuthService {
 
-    private final InMemoryUserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public AuthServiceImpl(InMemoryUserRepository userRepository) {
+    public AuthServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -35,8 +37,11 @@ public class AuthServiceImpl implements AuthService {
         if (!password.equals(repeatPassword)) {
             throw new PasswordsDoNotMatchException();
         }
+        if(this.userRepository.findByUsername(username).isPresent() || !this.userRepository.findByUsername(username).isEmpty()) {
+            throw new UsernameAlreadyExistsException(username);
+        }
         User user = new User(username,password,name,surname);
-        return userRepository.saveOrUpdate(user);
+        return userRepository.save(user);
     }
 }
 

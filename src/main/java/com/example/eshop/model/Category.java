@@ -1,13 +1,10 @@
 package com.example.eshop.model;
 
 import lombok.Data;
-import lombok.Generated;
-import lombok.Getter;
 
 import javax.persistence.*;
 
 @Data
-@Getter
 @Entity
 public class Category {
 
@@ -21,8 +18,10 @@ public class Category {
     private String description;
 
 
+    public Category () {
+    }
+
     public Category(String name, String description) {
-        this.id = (long) (Math.random() * 1000);
         this.name = name;
         this.description = description;
     }
