@@ -4,6 +4,7 @@ package com.example.eshop.web.controller;
 import com.example.eshop.model.ShoppingCart;
 import com.example.eshop.model.User;
 import com.example.eshop.service.ShoppingCartService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -34,11 +35,12 @@ public class ShoppingCartController {
     }
 
     @PostMapping("/add-product/{id}")
-    public String addProductToShoppingCart(@PathVariable Long id,HttpServletRequest req) {
+    public String addProductToShoppingCart(@PathVariable Long id, HttpServletRequest req, Authentication authentication) {
         try {
-            String username = req.getRemoteUser();
-            ShoppingCart shoppingCart = this.shoppingCartService.addProductToShoppingCart(username, id);
+            User user = (User) authentication.getPrincipal();
+            this.shoppingCartService.addProductToShoppingCart(user.getUsername(), id);
             return "redirect:/shopping-cart";
+
         }catch (RuntimeException exception) {
             return "redirect:/shopping-cart?error=" + exception.getMessage();
         }
